@@ -3,7 +3,7 @@ import DepenseList from './DepenseList';
 import { AppContext } from '../context/AppContext';
 import { useContext } from 'react';
 import {v4 as uuidv4} from 'uuid';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 
 export default function Form() {
@@ -11,7 +11,8 @@ export default function Form() {
    const [name,setName]=useState('');
    const [prix,setPrix]=useState('');
    const [catId, setCatId] = useState('0');
-   const category={type:['Investissement','Economies','Vetements','Sante','aliments']}
+   
+  const category={type:['Investissement','Economies','Vetements','Sante','aliments']};
 
 
 
@@ -22,6 +23,7 @@ export default function Form() {
             name : name,
             prix : parseInt(prix)
         };
+        swal("Good job!", "You clicked the button!", "success");
         dispatch({
             type:'ADD_DEPENSE',
             payload:depense
@@ -45,7 +47,7 @@ export default function Form() {
                 </div>
                 <select className='form-input' value={catId} onChange={(event)=>setCatId(parseInt(event.target.value))}>
                     {category.type.map((item, index) => (
-                    <option key={index} value={item}>
+                    <option key={index} value={index}>
                         {item}
                     </option>
                     ))}

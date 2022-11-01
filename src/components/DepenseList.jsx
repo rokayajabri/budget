@@ -2,11 +2,8 @@ import React,{useContext,useState,useEffect} from "react";
 import DepenseItem from "./DepenseItem";
 import { AppContext } from "../context/AppContext";
 
-
-
 const DepenseList =()=> {
     const { depenses } =useContext(AppContext);
-
     const [filteredDepenses, setfilteredDepenses] = useState(depenses || []);
 
     useEffect(() => {

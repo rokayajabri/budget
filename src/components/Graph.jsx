@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import {Chart,ArcElement} from 'chart.js';
 import Labels from './Labels';
+import { AppContext } from "../context/AppContext";
 
 Chart.register(ArcElement);
 
 
-const config={
+
+export default function Graph() {
+
+    const { depenses } =useContext(AppContext);
+    const data = depenses.map(item=> {return item.prix})
+    const totale = data.reduce((a,b)=>a+b,0)
+    const config={
     data :{
         datasets: [{
-            data: [11, 16, 1, 3, 14],
+            data: data,
             backgroundColor: [
               'rgb(255, 99, 132)',
               'rgb(75, 192, 192)',
@@ -27,14 +34,15 @@ const config={
     }
 }
 
-export default function Graph() {
+
+ 
   return (
     <div className='flex justify-content max-w-xs mx-auto'>
         <div className='item'>
             <div className='chart relative'>
                 <Doughnut {...config}></Doughnut>
                 <h3 className='mb-4 font-bold title'>Totale<br></br>
-                    <span className='block text-3xl text-emerald-400'>${0}</span>
+                    <span className='block text-3xl text-emerald-400'>{totale}DH</span>
                 </h3>
             </div>
 

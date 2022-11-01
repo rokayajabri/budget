@@ -30,7 +30,7 @@ const initialState={
     budget:4000,
     depenses:[
         {id:uuidv4(),name:'Transpore' ,prix:23,color:'rgb(255, 99, 132)'},
-        {id:uuidv4(),name:'vacance' ,prix:15, color:'rgb(17, 17, 202)'}
+        {id:uuidv4(),name:'vacance'  ,prix:15, color:'rgb(17, 17, 202)'},
     ]
 
 }
@@ -43,7 +43,6 @@ export const AppProvider=(props)=>{
         value={{
             budget:state.budget,
             depenses:state.depenses,
-            category:state.category,
             dispatch,
         }}
     >
